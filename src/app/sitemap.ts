@@ -1,6 +1,7 @@
-import { LOCALES } from '@/lib/def';
 import enPosts from '@/messages/en-US.json';
 import zhPosts from '@/messages/zh-CN.json';
+
+const locales = ['en-US', 'zh-CN'];
 
 export default function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
@@ -12,7 +13,7 @@ export default function sitemap() {
   };
 
   // 为每个语言版本添加基础页面
-  for (const locale of LOCALES) {
+  for (const locale of locales) {
     // 添加主页
     sitemapEntries.push({
       url: `${baseUrl}/${locale}`,
