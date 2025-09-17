@@ -2,36 +2,41 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import { Button } from './ui/button'
-import { locales, localeNames, type Locale } from '@/i18n/config'
-import { 
-  DropdownMenu, 
-  DropdownMenuTrigger, 
-  DropdownMenuContent, 
-  DropdownMenuItem 
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem
 } from '@/components/ui/dropdown-menu'
 import { Globe } from 'lucide-react'
+import { useLocale } from 'next-intl'
+
+const locales = ['en-US', 'zh-CN'];
+const localeNames: { [key: string]: string } = {
+  'en-US': 'English',
+  'zh-CN': '简体中文'
+};
 
 export function LanguageSwitcher() {
   const pathname = usePathname()
   const router = useRouter()
+  const currentLocale = useLocale();
 
-  const switchLanguage = (locale: Locale) => {
+  const switchLanguage = (locale: string) => {
     const newPathname = pathname.replace(/^\/[^\/]+/, `/${locale}`)
-    router.push(newPathname)
+    router.push(newPathname);
   }
-
-  const currentLocale = pathname.split('/')[1] as Locale
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button 
-          variant="ghost" 
-          size="icon" 
+        <Button
+          variant="ghost"
+          size="icon"
           className="hover:bg-transparent"
         >
           <Globe className="h-[1.2rem] w-[1.2rem]" />
-          <span className="sr-only">切换语言</span>
+          <span className="sr-only">Switch Language</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[120px]">

@@ -1,27 +1,26 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-import { getDictionary } from '@/i18n/get-dictionary'
-import type { Locale } from '@/i18n/config'
 import type { Metadata } from 'next'
+import { getTranslations } from "next-intl/server"
 
-export default async function BlogPage({ params: { lang } }: { params: { lang: Locale } }) {
-  const dict = await getDictionary(lang)
-  const posts = dict.blog.posts
+export default async function BlogPage({ params: { lang } }: { params: { lang: string } }) {
+  const t= await getTranslations({ locale: lang})
+  const posts = t.raw('blog.posts')
 
   return (
     <main className="container py-12 md:py-24">
       <div className="flex flex-col items-center space-y-4 text-center mb-12">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">
-          {dict.blog.title}
+          {t('blog.title')}
         </h1>
         <p className="max-w-[700px] text-gray-500 md:text-xl/relaxed">
-          {dict.blog.description}
+          {t('blog.description')}
         </p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map(post => (
+        {posts.map((post: any) => (
           <Link key={post.id} href={`/${lang}/blog/${post.slug}`}>
             <Card className="h-full hover:shadow-lg transition-shadow">
               <CardHeader>
@@ -39,7 +38,7 @@ export default async function BlogPage({ params: { lang } }: { params: { lang: L
       </div>
 
       <div className="flex justify-center mt-12">
-        <Button variant="outline">{dict.blog.loadMore}</Button>
+        <Button variant="outline">{t('blog.loadMore')}</Button>
       </div>
     </main>
   )
@@ -48,14 +47,14 @@ export default async function BlogPage({ params: { lang } }: { params: { lang: L
 export async function generateMetadata({ 
   params: { lang } 
 }: { 
-  params: { lang: Locale } 
+  params: { lang: string } 
 }): Promise<Metadata> {
-  const dict = await getDictionary(lang)
+  const t = await getTranslations({ locale: lang})
   const url = process.env.NEXT_PUBLIC_APP_URL || 'https://your-domain.com'
 
   return {
-    title: dict.blog.title,
-    description: dict.blog.description,
+    title: t('blog.title'),
+    description: t('blog.description'),
     alternates: {
       canonical: `${url}/${lang}/blog`,
       languages: {
@@ -64,8 +63,8 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: dict.blog.title,
-      description: dict.blog.description,
+      title: t('blog.title'),
+      description: t('blog.description'),
       url: `${url}/${lang}/blog`,
     }
   }

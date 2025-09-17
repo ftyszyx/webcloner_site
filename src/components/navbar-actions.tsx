@@ -55,13 +55,13 @@ export function NavbarActions() {
     <div className="flex items-center space-x-2">
       <ThemeToggle />
       <LanguageSwitcher />
-      {isLoggedIn ? (
+      {/* {isLoggedIn ? (
         <UserNav onLogout={handleLogout} />
       ) : (
         <Link href={`/signin`}>
           <Button variant="ghost" size="sm">{t('signin')}</Button>
         </Link>
-      )}
+      )} */}
     </div>
   )
 }

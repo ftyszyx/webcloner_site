@@ -9,16 +9,15 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { LogOut, User } from "lucide-react"
 import { useRouter } from "next/navigation"
-import type { Locale } from "@/i18n/config"
 import { useEffect, useState } from "react"
+import { useTranslations } from "next-intl"
 
 interface UserNavProps {
-  lang: Locale
-  dict: any
   onLogout: () => void
 }
 
-export function UserNav({ lang, dict, onLogout }: UserNavProps) {
+export function UserNav({ onLogout }: UserNavProps) {
+  const t = useTranslations('nav');
   const [email, setEmail] = useState<string>('')
   const router = useRouter()
 
@@ -48,18 +47,18 @@ export function UserNav({ lang, dict, onLogout }: UserNavProps) {
           </div>
         </div>
         <DropdownMenuItem 
-          onClick={() => router.push(`/${lang}/profile`)}
+          onClick={() => router.push(`/profile`)}
           className="flex items-center gap-2 cursor-pointer transition-colors duration-200 hover:bg-muted/50 focus:bg-muted"
         >
           <User className="h-4 w-4" />
-          {dict.nav.profile}
+          {t('profile')}
         </DropdownMenuItem>
         <DropdownMenuItem 
           onClick={onLogout}
           className="flex items-center gap-2 cursor-pointer transition-colors duration-200 hover:bg-muted/50 focus:bg-muted text-destructive hover:text-destructive"
         >
           <LogOut className="h-4 w-4" />
-          <span>{dict.nav.signout}</span>
+          <span>{t('signout')}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

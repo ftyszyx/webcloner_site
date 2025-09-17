@@ -7,5 +7,7 @@ module.exports = {
     parserOptions: {
         sourceType: "script",
     },
-    rules: {},
+    rules: {
+        "@typescript-eslint/no-require-imports": "off",
+    },
 };

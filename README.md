@@ -30,3 +30,8 @@ GOOGLE_CLIENT_SECRET=xxxxx
 ```
 npm run dev
 ```
+
+
+### change 
+
+1. use next-intl 处理多语言问题，避免语言参数层层传递

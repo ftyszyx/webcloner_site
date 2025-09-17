@@ -1,65 +1,51 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { 
-  Accordion, 
-  AccordionContent, 
-  AccordionItem, 
-  AccordionTrigger 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/ui/accordion"
-import { getDictionary } from "@/i18n/get-dictionary"
-import type { Locale } from "@/i18n/config"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+import { useTranslations } from "next-intl"
 
-export default async function FAQ({
-  lang
-}: {
-  lang: Locale
-}) {
-  const dict = await getDictionary(lang)
+export default function FAQ() {
+  const t = useTranslations('faq');
+
+  const faqData = {
+    [t('tabs.general')]: t.raw('questions.general'),
+    [t('tabs.features')]: t.raw('questions.features'),
+    [t('tabs.technical')]: t.raw('questions.technical')
+  }
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
-            {dict.faq.title}
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            {t('title')}
           </h2>
           <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            {dict.faq.description}
+            {t('description')}
           </p>
         </div>
-
-        <div className="mx-auto max-w-3xl mt-8">
-          <Tabs defaultValue="general" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 gap-2">
-              <TabsTrigger 
-                value="general" 
-                className="tab-highlight tab-active-glow flex items-center gap-2"
-              >
-                {dict.faq.tabs.general}
-              </TabsTrigger>
-              <TabsTrigger 
-                value="features" 
-                className="tab-highlight tab-active-glow flex items-center gap-2"
-              >
-                {dict.faq.tabs.features}
-              </TabsTrigger>
-              <TabsTrigger 
-                value="technical" 
-                className="tab-highlight tab-active-glow flex items-center gap-2"
-              >
-                {dict.faq.tabs.technical}
-              </TabsTrigger>
+        <div className="mx-auto mt-8 max-w-3xl">
+          <Tabs defaultValue={Object.keys(faqData)[0]}>
+            <TabsList className="grid w-full grid-cols-3">
+              {Object.keys(faqData).map((tab) => (
+                <TabsTrigger key={tab} value={tab}>{tab}</TabsTrigger>
+              ))}
             </TabsList>
-            {Object.entries(dict.faq.questions).map(([category, questions]) => (
-              <TabsContent key={category} value={category}>
+            {Object.entries(faqData).map(([tab, questions]) => (
+              <TabsContent key={tab} value={tab}>
                 <Accordion type="single" collapsible className="w-full">
-                  {questions.map((item, index) => (
+                  {questions.map((q: any, index: number) => (
                     <AccordionItem key={index} value={`item-${index}`}>
-                      <AccordionTrigger className="text-left">
-                        {item.question}
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <p className="text-gray-500">{item.answer}</p>
-                      </AccordionContent>
+                      <AccordionTrigger>{q.question}</AccordionTrigger>
+                      <AccordionContent>{q.answer}</AccordionContent>
                     </AccordionItem>
                   ))}
                 </Accordion>

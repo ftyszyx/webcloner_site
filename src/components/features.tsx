@@ -1,40 +1,34 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { getDictionary } from "@/i18n/get-dictionary"
-import type { Locale } from "@/i18n/config"
 import { 
   BookOpen, 
-  Bookmark, 
-  Share2, 
-  Shield 
+  Bookmark,
+  Share2,
+  Shield
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-export default async function Features({
-  lang
-}: {
-  lang: Locale
-}) {
-  const dict = await getDictionary(lang)
-
+export default function Features() {
+  const t = useTranslations();
   const features = [
     {
       icon: <BookOpen className="h-6 w-6" />,
-      title: dict.features.tabs.title,
-      description: dict.features.tabs.description
+      title: t('features.tabs.title'),
+      description: t('features.tabs.description')
     },
     {
       icon: <Bookmark className="h-6 w-6" />,
-      title: dict.features.bookmarks.title,
-      description: dict.features.bookmarks.description
+      title: t('features.bookmarks.title'),
+      description: t('features.bookmarks.description')
     },
     {
       icon: <Share2 className="h-6 w-6" />,
-      title: dict.features.share.title,
-      description: dict.features.share.description
+      title: t('features.share.title'),
+      description: t('features.share.description')
     },
     {
       icon: <Shield className="h-6 w-6" />,
-      title: dict.features.security.title,
-      description: dict.features.security.description
+      title: t('features.security.title'),
+      description: t('features.security.description')
     }
   ]
 
@@ -43,10 +37,10 @@ export default async function Features({
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
-            {dict.features.title}
+            {t('features.title')}
           </h2>
           <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            {dict.features.description}
+            {t('features.description')}
           </p>
         </div>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mt-8">

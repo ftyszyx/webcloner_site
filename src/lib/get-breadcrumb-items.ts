@@ -1,14 +1,13 @@
-import type { Locale } from "@/i18n/config"
 
 export function getBreadcrumbItems(pathname: string, dict: any) {
   const paths = pathname.split('/').filter(Boolean)
   const items = []
-  
+
   // 移除语言部分
-  const lang = paths.shift() as Locale
-  
+  const lang = paths.shift() as string
+
   for (const path of paths) {
-    switch(path) {
+    switch (path) {
       case 'blog':
         // 只有当不是最后一个路径时才添加链接
         if (paths.length > 1) {
@@ -56,6 +55,6 @@ export function getBreadcrumbItems(pathname: string, dict: any) {
         }
     }
   }
-  
+
   return items
 }
