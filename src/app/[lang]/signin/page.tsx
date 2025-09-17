@@ -1,15 +1,12 @@
 import { AuthForm } from "@/components/auth/auth-form"
 import { Icons } from "@/components/icons"
+import { getTranslations } from "next-intl/server"
 import Link from "next/link"
-import { getDictionary } from "@/i18n/get-dictionary"
-import type { Locale } from "@/i18n/config"
 
-export default async function SignInPage({
-  params: { lang }
-}: {
-  params: { lang: Locale }
+export default async function SignInPage({ params: { lang } }: {
+  params: { lang: string }
 }) {
-  const dict = await getDictionary(lang)
+  const t = await getTranslations({ locale: lang})
 
   return (
     <div className="container relative flex-1 flex items-center justify-center min-h-[calc(100vh-8rem)]">
@@ -17,19 +14,19 @@ export default async function SignInPage({
         <div className="flex flex-col space-y-2 text-center">
           <Icons.chrome className="mx-auto h-6 w-6" />
           <h1 className="text-2xl font-semibold tracking-tight">
-            {dict.auth.signin.title}
+            {t('auth.signin.title')}
           </h1>
           <p className="text-sm text-muted-foreground">
-            {dict.auth.signin.description}
+            {t('auth.signin.description')}
           </p>
         </div>
-        <AuthForm mode="signin" lang={lang} />
+        <AuthForm mode="signin" />
         <p className="px-8 text-center text-sm text-muted-foreground">
           <Link 
             href={`/${lang}/signup`}
             className="hover:text-brand underline underline-offset-4"
           >
-            {dict.auth.signin.noAccount} {dict.auth.signin.signupLink}
+            {t('auth.signin.noAccount')} {t('auth.signin.signupLink')}
           </Link>
         </p>
       </div>

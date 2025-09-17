@@ -5,30 +5,28 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Icons } from "@/components/icons"
 import { useState, useEffect } from "react"
-import { getDictionary } from "@/i18n/get-dictionary"
-import type { Locale } from "@/i18n/config"
 import { supabase } from "@/lib/supabase"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
 import Link from "next/link"
+import { useLocale, useTranslations } from "next-intl"
 
 interface AuthFormProps {
   mode: "signin" | "signup"
-  lang: Locale
 }
 
-export function AuthForm({ mode, lang }: AuthFormProps) {
+export function AuthForm({ mode}: AuthFormProps) {
+  const t = useTranslations()
+  const lang = useLocale()
   const [isLoading, setIsLoading] = useState(false)
-  const [dict, setDict] = useState<any>(null)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const router = useRouter()
 
   useEffect(() => {
-    getDictionary(lang).then(setDict)
-  }, [lang])
+  }, [])
 
-  if (!dict) return null
+  if (isLoading) return null
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault()
@@ -36,10 +34,10 @@ export function AuthForm({ mode, lang }: AuthFormProps) {
 
     try {
       if (!email.trim()) {
-        throw new Error(dict.auth.form.errors?.emailRequired || '请输入邮箱')
+        throw new Error(t('auth.form.errors.emailRequired') || '请输入邮箱')
       }
       if (!password.trim()) {
-        throw new Error(dict.auth.form.errors?.passwordRequired || '请输入密码')
+        throw new Error(t('auth.form.errors.passwordRequired') || '请输入密码')
       }
 
       if (mode === "signin") {
@@ -51,17 +49,17 @@ export function AuthForm({ mode, lang }: AuthFormProps) {
         if (error) throw error
 
         if (!data || data.length === 0) {
-          throw new Error(dict.auth.signin.errors?.userNotFound || '用户不存在')
+          throw new Error(t('auth.signin.errors.userNotFound') || '用户不存在')
         }
 
         const user = data[0]
         if (user.password !== password) {
-          throw new Error(dict.auth.signin.errors?.wrongPassword || '密码错误')
+          throw new Error(t('auth.signin.errors.wrongPassword') || '密码错误')
         }
 
         document.cookie = `userEmail=${encodeURIComponent(email)}; path=/; max-age=${60 * 60 * 24 * 30}; secure; samesite=lax`;
         window.dispatchEvent(new Event('loginStateChange'));
-        toast.success(dict.auth.signin.success || "登录成功!");
+        toast.success(t('auth.signin.success') || "登录成功!");
         router.refresh();
         router.push(`/${lang}`);
       } else {
@@ -72,7 +70,7 @@ export function AuthForm({ mode, lang }: AuthFormProps) {
           .single()
 
         if (existingUser) {
-          throw new Error(dict.auth.signup.errors?.emailExists || '该邮箱已被注册')
+          throw new Error(t('auth.signup.errors.emailExists') || '该邮箱已被注册')
         }
 
         const today = new Date()
@@ -92,11 +90,11 @@ export function AuthForm({ mode, lang }: AuthFormProps) {
 
         if (insertError) throw insertError
 
-        toast.success(dict.auth.signup.success || "注册成功!")
+        toast.success(t('auth.signup.success') || "注册成功!")
         router.push(`/${lang}/signin`)
       }
     } catch (error: any) {
-      toast.error(error.message || (mode === "signin" ? dict.auth.signin.error : dict.auth.signup.error) || "操作失败!")
+      toast.error(error.message || (mode === "signin" ? t('auth.signin.error') : t('auth.signup.error')) || "操作失败!")
     } finally {
       setIsLoading(false)
     }
@@ -107,10 +105,10 @@ export function AuthForm({ mode, lang }: AuthFormProps) {
       <form onSubmit={onSubmit}>
         <div className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="email">{dict.auth.form.email}</Label>
+            <Label htmlFor="email">{t('auth.form.email')}</Label>
             <Input
               id="email"
-              placeholder={dict.auth.form.emailPlaceholder}
+              placeholder={t('auth.form.emailPlaceholder')}
               type="email"
               autoCapitalize="none"
               autoComplete="email"
@@ -123,13 +121,13 @@ export function AuthForm({ mode, lang }: AuthFormProps) {
           </div>
           <div className="grid gap-2">
             <div className="flex items-center justify-between">
-              <Label htmlFor="password">{dict.auth.form.password}</Label>
+              <Label htmlFor="password">{t('auth.form.password')}</Label>
               {mode === "signin" && (
                 <Link
                   href={`/${lang}/forgot-password`}
                   className="text-sm text-muted-foreground hover:text-primary"
                 >
-                  {dict.auth.form.forgotPassword}
+                  {t('auth.form.forgotPassword')}
                 </Link>
               )}
             </div>
@@ -147,7 +145,7 @@ export function AuthForm({ mode, lang }: AuthFormProps) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            {mode === "signin" ? dict.auth.signin.submitButton : dict.auth.signup.submitButton}
+            {mode === "signin" ? t('auth.signin.submitButton') : t('auth.signup.submitButton')}
           </Button>
         </div>
       </form>
@@ -157,7 +155,7 @@ export function AuthForm({ mode, lang }: AuthFormProps) {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
-            {dict.auth.form.continueWith}
+            {t('auth.form.continueWith')}
           </span>
         </div>
       </div>

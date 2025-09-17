@@ -1,6 +1,6 @@
-import { locales } from '@/middleware';
-import enPosts from './[lang]/i18n/dictionaries/en-US.json';
-import zhPosts from './[lang]/i18n/dictionaries/zh-CN.json';
+import { LOCALES } from '@/lib/def';
+import enPosts from '@/messages/en-US.json';
+import zhPosts from '@/messages/zh-CN.json';
 
 export default function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
@@ -12,7 +12,7 @@ export default function sitemap() {
   };
 
   // 为每个语言版本添加基础页面
-  for (const locale of locales) {
+  for (const locale of LOCALES) {
     // 添加主页
     sitemapEntries.push({
       url: `${baseUrl}/${locale}`,

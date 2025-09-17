@@ -10,9 +10,8 @@ import { useEffect, useState } from "react"
 import { useLocale, useTranslations } from "next-intl"
 
 export function NavbarActions() {
-  const t = useTranslations('nav');
   const lang = useLocale();
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [, setIsLoggedIn] = useState(false)
   const router = useRouter()
 
   // 监听登录状态

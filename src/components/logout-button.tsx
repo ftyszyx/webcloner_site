@@ -1,10 +1,9 @@
 'use client'
 
 import { useRouter } from "next/navigation"
-import type { Locale } from "@/i18n/config"
 
 interface LogoutButtonProps {
-  lang: Locale
+  lang: string
   children: React.ReactNode
   className?: string
 }
