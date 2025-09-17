@@ -32,6 +32,20 @@ npm run dev
 ```
 
 
+## test docker
+
+### build docker
+
+```
+docker build -t webcloner .
+```
+
+### run docker
+
+```
+docker run -p 3000:3000 --env-file .env webcloner
+```
+
 ### change 
 
 1. use next-intl 处理多语言问题，避免语言参数层层传递
