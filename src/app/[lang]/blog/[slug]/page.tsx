@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { getTranslations } from 'next-intl/server';
 
-export default async function BlogPost({ params }: { params: { slug: string,lang: string } }) {
+export default async function BlogPost({ params }: { params: { slug: string, lang: string } }) {
   const t = await getTranslations('blog');
   const post = await getPost(params.slug, params.lang) as unknown as {
     title: string;
@@ -24,7 +24,7 @@ export default async function BlogPost({ params }: { params: { slug: string,lang
           {t('backToList')}
         </Button>
       </Link>
-      
+
       <article className="prose prose-gray dark:prose-invert mx-auto">
         <h1 className="mb-4">{post.title}</h1>
         <div className="flex items-center text-gray-500 mb-8">
@@ -47,7 +47,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string, lang: string }
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.lang});
+  const t = await getTranslations({ locale: params.lang });
   const post = await getPost(params.slug, params.lang) as unknown as {
     title: string
     description?: string

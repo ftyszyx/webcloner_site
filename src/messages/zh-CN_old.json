@@ -1,0 +1,252 @@
+{
+  "nav": {
+    "features": "功能",
+    "blog": "博客",
+    "pricing": "价格",
+    "docs": "文档",
+    "signin": "登录",
+    "signout": "退出登录",
+    "profile": "个人中心",
+    "download": "开始使用"
+  },
+  "home": {
+    "hero": {
+      "title": "一键克隆任何网站",
+      "description": "WebCloner 是一个强大的工具，可以帮助您快速、完整地克隆和备份任何网站。",
+      "learnMore": "了解更多",
+      "watchDemo": "查看演示"
+    },
+    "cta": {
+      "title": "立即开始克隆网站",
+      "description": "注册一个免费账户，立即体验强大的网站克隆功能。",
+      "button": "开始免费克隆"
+    }
+  },
+  "footer": {
+    "product": "产品",
+    "resources": "资源",
+    "social": "社交",
+    "support": "支持",
+    "company": "公司",
+    "copyright": "© 2024 WebCloner. 保留所有权利.",
+    "links": {
+      "features": "功能",
+      "pricing": "价格",
+      "changelog": "更新日志",
+      "roadmap": "路线图",
+      "docs": "文档",
+      "dev": "开发者",
+      "api": "API",
+      "faq": "常见问题",
+      "help": "帮助",
+      "contact": "联系我们",
+      "feedback": "反馈",
+      "status": "状态",
+      "about": "关于我们",
+      "terms": "条款",
+      "privacy": "隐私",
+      "jobs": "招聘",
+      "blog": "博客",
+      "twitter": "推特",
+      "github": "Github",
+      "jike": "即刻",
+      "xhs": "小红书",
+      "bento": "yeheboo",
+      "freeourdays": "freeourdays",
+      "githubtree": "Github Tree Map",
+      "distributer": "Distributer"
+    }
+  },
+  "metadata": {
+    "title": "WebCloner - 轻松克隆任何网站",
+    "description": "使用 WebCloner，您可以一键克隆、下载和存档任何网站，适用于网站备份、离线浏览和开发测试。",
+    "keywords": "网站克隆, 网站备份, 网站下载, 网页抓取, 离线浏览"
+  },
+  "common": {
+    "brand": "WebCloner",
+    "loading": "加载中..."
+  },
+  "features": {
+    "title": "强大的功能特性",
+    "description": "探索 WebCloner 的核心功能，让网站克隆变得前所未有的简单。",
+    "tabs": {
+      "title": "完整网站克隆",
+      "description": "克隆整个网站，包括所有页面、样式表、脚本和图片资源。"
+    },
+    "bookmarks": {
+      "title": "离线访问",
+      "description": "将克隆的网站保存在本地，随时随地进行离线浏览和访问。"
+    },
+    "share": {
+      "title": "自定义配置",
+      "description": "自定义克隆深度、资源类型和域名规则，满足您的特定需求。"
+    },
+    "security": {
+      "title": "网站存档",
+      "description": "为您的网站创建永久备份，防止数据丢失或网站下线。"
+    }
+  },
+  "faq": {
+    "title": "常见问题",
+    "description": "解答您可能遇到的问题",
+    "tabs": {
+      "general": "基本问题",
+      "features": "功能相关",
+      "technical": "技术支持"
+    },
+    "questions": {
+      "general": [
+        {
+          "question": "WebCloner 是免费的吗？",
+          "answer": "是的,我们提供免费版本供所有用户使用。同时也提供付费专业版,拥有更多高级功能。"
+        },
+        {
+          "question": "如何使用 WebCloner？",
+          "answer": "WebCloner 是一个在线服务，您无需安装任何软件。只需注册一个账户，输入您想克隆的网站 URL 即可开始。"
+        }
+      ],
+      "features": [
+        {
+          "question": "克隆一个网站需要多长时间？",
+          "answer": "克隆时间取决于网站的大小和复杂程度。一个小型网站可能只需要几分钟，而大型网站可能需要更长时间。"
+        },
+        {
+          "question": "我能克隆需要登录的网站吗？",
+          "answer": "是的，专业版支持克隆需要登录验证的网站，您可以提供登录凭据来访问受保护的内容。"
+        }
+      ],
+      "technical": [
+        {
+          "question": "克隆的网站可以在哪里使用？",
+          "answer": "克隆下来的网站是一个标准的 HTML/CSS/JS 文件包，您可以在任何现代浏览器中打开它，或者部署到您自己的服务器上。"
+        },
+        {
+          "question": "你们会存储我克隆的网站数据吗？",
+          "answer": "我们只在克隆过程中临时处理您的数据。克隆完成后，您可以下载 ZIP 压缩包，我们不会在服务器上保留您的网站数据。"
+        }
+      ]
+    }
+  },
+  "blog": {
+    "backToList": "返回博客列表",
+    "title": "博客文章",
+    "description": "分享关于网站克隆、数据备份和网络技术的见解。",
+    "loadMore": "加载更多",
+    "posts": [
+      {
+        "id": 1,
+        "title": "如何用 WebCloner 备份你的 WordPress 博客",
+        "description": "一个简单的指南，教你如何完整备份你的个人博客网站。",
+        "date": "2024-03-15",
+        "readTime": "10分钟阅读",
+        "slug": "how-to-backup-wordpress-with-webcloner"
+      }
+    ]
+  },
+  "auth": {
+    "signin": {
+      "title": "欢迎回来",
+      "description": "请输入您的邮箱和密码登录",
+      "submitButton": "登录",
+      "noAccount": "没有账号?",
+      "signupLink": "注册",
+      "success": "登录成功!",
+      "error": "登录失败,请检查邮箱和密码!",
+      "errors": {
+        "userNotFound": "用户不存在",
+        "wrongPassword": "密码错误"
+      }
+    },
+    "signup": {
+      "title": "创建账号",
+      "description": "请输入您的邮箱和密码注册",
+      "submitButton": "注册",
+      "hasAccount": "已有账号?",
+      "signinLink": "登录",
+      "success": "注册成功!",
+      "error": "注册失败,请检查邮箱和密码!"
+    },
+    "form": {
+      "email": "邮箱",
+      "password": "密码",
+      "emailPlaceholder": "name@example.com",
+      "continueWith": "或继续使用",
+      "errors": {
+        "emailRequired": "请输入邮箱",
+        "passwordRequired": "请输入密码"
+      }
+    },
+    "signout": {
+      "success": "退出成功!"
+    }
+  },
+  "profile": {
+    "title": "个人中心",
+    "tabs": {
+      "profile": "基本信息",
+      "subscription": "订阅信息",
+      "settings": "账号设置"
+    },
+    "basicInfo": "基本信息",
+    "email": "邮箱",
+    "joinDate": "注册时间",
+    "subscription": "订阅信息",
+    "currentPlan": "当前方案",
+    "freePlan": "免费版",
+    "proPlan": "专业版",
+    "expireDate": "到期时间",
+    "settings": "账号设置",
+    "settingsComingSoon": "更多设置选项开发中..."
+  },
+  "pricing": {
+    "title": "简单透明的价格方案",
+    "description": "选择最适合您的方案，随时可以升级或降级",
+    "plans": {
+      "free": {
+        "name": "免费版",
+        "price": "¥0",
+        "description": "适合个人用户使用",
+        "features": [
+          "每月 3 次克隆",
+          "最大克隆深度 2 层",
+          "仅支持静态网站",
+          "社区支持"
+        ]
+      },
+      "pro": {
+        "name": "专业版",
+        "price": "¥29",
+        "description": "适合专业用户使用",
+        "features": [
+          "无限次克隆",
+          "无限克隆深度",
+          "支持动态网站 (JavaScript渲染)",
+          "支持登录验证网站",
+          "优先技术支持",
+          "自定义 User-Agent"
+        ]
+      },
+      "team": {
+        "name": "团队版",
+        "price": "¥99",
+        "description": "适合团队协作使用",
+        "features": [
+          "所有专业版功能",
+          "团队成员协作",
+          "共享克隆任务",
+          "统一账单管理",
+          "专属客户经理",
+          "API访问权限"
+        ]
+      }
+    },
+    "cta": {
+      "free": "免费开始",
+      "paid": "立即购买"
+    },
+    "footer": {
+      "refund": "所有方案均支持14天无理由退款，如有问题请",
+      "contact": "联系我们"
+    }
+  }
+}

@@ -9,7 +9,7 @@ import Link from "next/link"
 import { useTranslations } from "next-intl"
 
 export function MobileNav() {
-  const t = useTranslations('nav');
+  const t = useTranslations();
 
   return (
     <Sheet>
@@ -19,23 +19,23 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent 
-        side="left" 
+      <SheetContent
+        side="left"
         className="w-[240px] sm:w-[300px] glass border-0 bg-background/40 backdrop-blur-sm"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/5 to-transparent pointer-events-none" />
         <nav className="relative flex flex-col space-y-4 mt-8">
-          <Link 
-            href={`/blog`} 
+          <Link
+            href={`/blog`}
             className="text-sm font-medium transition-colors hover:text-primary"
           >
-            {t('blog')}
+            {t('nav.blog')}
           </Link>
-          <Link 
-            href={`/pricing`} 
+          <Link
+            href={`/pricing`}
             className="text-sm font-medium transition-colors hover:text-primary"
           >
-            {t('pricing')}
+            {t('nav.pricing')}
           </Link>
         </nav>
       </SheetContent>
