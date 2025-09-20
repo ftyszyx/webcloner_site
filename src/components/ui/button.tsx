@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "glow group bg-gradient-to-br from-primary/90 to-primary text-primary-foreground hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0",
+        default: "glow group bg-gradient-to-br from-primary to-primary/80 text-primary-foreground ring-1 ring-primary/40 hover:ring-primary/60 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 active:translate-y-0",
         glass: "glass hover:shadow-md hover:-translate-y-0.5 active:translate-y-0",
         outline: "glass border-[var(--glass-border)] hover:shadow-md hover:-translate-y-0.5 active:translate-y-0",
         destructive:

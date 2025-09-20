@@ -1,9 +1,11 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import AppIcon from "@/app/app.svg"
 import Features from "@/components/features"
 import Hero from "@/components/hero"
 import FAQ from "@/components/faq"
-import { useTranslations } from 'next-intl';
+import Platforms from "@/components/platforms"
+import { useTranslations } from '@/i18n/client';
 
 export default function Home() {
   const t = useTranslations();
@@ -11,9 +13,10 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center w-full">
       <Hero />
+      <Platforms />
       <Features />
-      <FAQ />
-      <section className="w-full py-12 md:py-24 lg:py-32">
+      {/* <FAQ /> */}
+      {/* <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
@@ -28,7 +31,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   )
 }

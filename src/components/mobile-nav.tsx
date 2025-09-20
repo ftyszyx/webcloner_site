@@ -1,3 +1,4 @@
+"use client"
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -6,7 +7,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import Link from "next/link"
-import { useTranslations } from "next-intl"
+import { useTranslations } from "@/i18n/client"
 
 export function MobileNav() {
   const t = useTranslations();

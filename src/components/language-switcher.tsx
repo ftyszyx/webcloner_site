@@ -4,8 +4,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Globe } from "lucide-react";
-import { locales, localeNames } from "@/lib/utils";
-import { useLocale } from "next-intl";
+import { supportedLocales, localeNames } from "@/i18n/index";
+import { useLocale } from "@/i18n/client";
 
 export function LanguageSwitcher() {
   const pathname = usePathname();
@@ -26,7 +26,7 @@ export function LanguageSwitcher() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[120px]">
-        {locales.map((locale) => (
+        {supportedLocales.map((locale) => (
           <DropdownMenuItem
             key={locale}
             onClick={() => switchLanguage(locale)}

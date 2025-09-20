@@ -14,7 +14,8 @@
       "title": "备份你需要的一切",
       "description": "WebCloner 是一个强大的工具，可以帮你备份网站的内容，包括：新浪微博，新浪博客，qq说说，qq空间等",
       "learnMore": "了解更多",
-      "watchDemo": "查看演示"
+      "watchDemo": "查看演示",
+      "download": "直接下载使用"
     },
     "cta": {
       "title": "立即开始克隆网站",
@@ -67,7 +68,7 @@
     "loading": "加载中..."
   },
   "features": {
-    "title": "强大的功能特性",
+    "title": "功能特性",
     "description": "探索 WebCloner 的核心功能，让网站克隆变得前所未有的简单。",
     "tabs": {
       "title": "完整网站克隆",
@@ -84,6 +85,22 @@
     "security": {
       "title": "网站存档",
       "description": "为您的网站创建永久备份，防止数据丢失或网站下线。"
+    },
+    "account": {
+      "title": "账号管理",
+      "description": "通过模拟浏览器登录，提前保存好平台的账号信息，方便后续使用。"
+    },
+    "task": {
+      "description": "通过任务管理，可以批量克隆网站，并设置克隆深度、资源类型和域名规则，满足您的特定需求。",
+      "title": "任务管理"
+    },
+    "home": {
+      "title": "首页",
+      "description": "简洁的页面设计，让用户可以快速了解网站的功能和特点。"
+    },
+    "weibo_save": {
+      "title": "镜像保存",
+      "description": "一键保存风页的镜像，保留你的原始数据,和原始平台保持一致。"
     }
   },
   "faq": {
@@ -253,5 +270,9 @@
       "contact": "联系我们"
     }
   },
-  "backToList": ""
+  "backToList": "",
+  "platforms": {
+    "title": "支持主流的内容平台",
+    "subtitle": "一键备份,保留你的原始数据"
+  }
 }

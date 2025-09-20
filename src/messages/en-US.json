@@ -14,7 +14,8 @@
       "title": "Browse More Efficiently",
       "description": "Our Chrome extension helps you better manage tabs and improve productivity",
       "learnMore": "Learn More",
-      "watchDemo": "Watch Demo"
+      "watchDemo": "Watch Demo",
+      "download": ""
     },
     "cta": {
       "title": "Get Started Now",
@@ -84,6 +85,22 @@
     "security": {
       "title": "Security",
       "description": "Protect your privacy and enhance browsing security"
+    },
+    "account": {
+      "title": "",
+      "description": ""
+    },
+    "task": {
+      "description": "",
+      "title": ""
+    },
+    "home": {
+      "title": "",
+      "description": ""
+    },
+    "weibo_save": {
+      "title": "",
+      "description": ""
     }
   },
   "faq": {
@@ -253,5 +270,9 @@
       "contact": "contact us"
     }
   },
-  "backToList": ""
+  "backToList": "",
+  "platforms": {
+    "title": "",
+    "subtitle": ""
+  }
 }

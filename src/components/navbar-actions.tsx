@@ -7,7 +7,7 @@ import { UserNav } from "./user-nav"
 import { Button } from "./ui/button"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { useLocale, useTranslations } from "next-intl"
+import { useLocale } from "@/i18n/client"
 
 export function NavbarActions() {
   const lang = useLocale();

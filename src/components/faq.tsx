@@ -1,3 +1,4 @@
+"use client"
 import {
   Accordion,
   AccordionContent,
@@ -10,7 +11,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import { useTranslations } from "next-intl"
+import { useTranslations } from "@/i18n/client"
 
 export default function FAQ() {
   const t = useTranslations('faq');

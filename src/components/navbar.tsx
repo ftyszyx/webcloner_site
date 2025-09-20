@@ -1,12 +1,12 @@
+"use client"
 import Link from "next/link"
 import AppIcon from "@/app/app.svg"
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/client';
 import { NavbarActions } from "./navbar-actions"
 import { MobileNav } from "./mobile-nav"
 
 export default function Navbar() {
   const t = useTranslations();
-
   return (
     <header className="sticky top-0 z-50 w-full glass">
       <div className="container flex h-14 items-center">
@@ -22,12 +22,6 @@ export default function Navbar() {
               <Link href={`https://blog.bytefuse.cn/M2XYdbunIouhGsxxNOkcfdiGnvh`} className="text-sm font-medium transition-colors hover:text-primary">
                 {t('nav.blog')}
               </Link>
-              {/* <Link href={`/blog`} className="text-sm font-medium transition-colors hover:text-primary">
-                {t('nav.blog')}
-              </Link> */}
-              {/* <Link href={`/pricing`} className="text-sm font-medium transition-colors hover:text-primary">
-                {t('nav.pricing')}
-              </Link> */}
             </div>
           </div>
           <NavbarActions />
