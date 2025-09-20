@@ -1,13 +1,13 @@
 import { AuthForm } from "@/components/auth/auth-form"
 import { Icons } from "@/components/icons"
 import Link from "next/link"
-import { useTranslations } from "next-intl"
+import { useTranslations } from "@/i18n/client"
 export default function SignUpPage({
   params: { lang }
 }: {
   params: { lang: string }
 }) {
-  const t = useTranslations()
+  const t = useTranslations(lang)
   return (
     <div className="container relative flex-1 flex items-center justify-center min-h-[calc(100vh-8rem)]">
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">

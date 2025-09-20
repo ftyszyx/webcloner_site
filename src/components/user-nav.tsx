@@ -10,14 +10,15 @@ import {
 import { LogOut, User } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "@/i18n/client"
 
 interface UserNavProps {
   onLogout: () => void
 }
 
 export function UserNav({ onLogout }: UserNavProps) {
-  const t = useTranslations('nav');
+  const t = useTranslations();
+  const locale = useLocale();
   const [email, setEmail] = useState<string>('')
   const router = useRouter()
 
@@ -47,7 +48,7 @@ export function UserNav({ onLogout }: UserNavProps) {
           </div>
         </div>
         <DropdownMenuItem 
-          onClick={() => router.push(`/profile`)}
+          onClick={() => router.push(`/${locale}/profile`)}
           className="flex items-center gap-2 cursor-pointer transition-colors duration-200 hover:bg-muted/50 focus:bg-muted"
         >
           <User className="h-4 w-4" />

@@ -9,7 +9,7 @@ import { supabase } from "@/lib/supabase"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
 import Link from "next/link"
-import { useLocale, useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "@/i18n/client"
 
 interface AuthFormProps {
   mode: "signin" | "signup"

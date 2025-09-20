@@ -1,12 +1,14 @@
+"use client"
 import { AuthForm } from "@/components/auth/auth-form"
 import { Icons } from "@/components/icons"
-import { getTranslations } from "next-intl/server"
+import { useTranslations, useLocale } from "@/i18n/client"
 import Link from "next/link"
 
-export default async function SignInPage({ params: { lang } }: {
+export default function SignInPage({ params: { lang } }: {
   params: { lang: string }
 }) {
-  const t = await getTranslations({ locale: lang})
+  const t = useTranslations()
+  const locale = useLocale()
 
   return (
     <div className="container relative flex-1 flex items-center justify-center min-h-[calc(100vh-8rem)]">
@@ -23,7 +25,7 @@ export default async function SignInPage({ params: { lang } }: {
         <AuthForm mode="signin" />
         <p className="px-8 text-center text-sm text-muted-foreground">
           <Link 
-            href={`/${lang}/signup`}
+            href={`/${locale}/signup`}
             className="hover:text-brand underline underline-offset-4"
           >
             {t('auth.signin.noAccount')} {t('auth.signin.signupLink')}

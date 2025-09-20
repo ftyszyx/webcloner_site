@@ -2,15 +2,11 @@ import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import type { Metadata } from 'next'
-import { getTranslations } from "next-intl/server"
+import { getMessages, createT } from "@/i18n"
 
-export default async function PricingPage({
-  params: { lang }
-}: {
-  params: { lang: string }
+export default function PricingPage({ params: { lang } }: { params: { lang: string }
 }) {
-  const t= (await getTranslations({ locale: lang}))
-  // const { pricing } = dict
+  const t = createT(getMessages(lang))
 
   const plans = [
    t('pricing.plans.free'),
@@ -82,8 +78,8 @@ export async function generateMetadata({
 }: { 
     params: { lang: string } 
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale: lang})
-  const url = process.env.NEXT_PUBLIC_APP_URL || 'https://your-domain.com'
+  const t = createT(getMessages(lang))
+  const url = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
   return {
     title: t('pricing.title'),

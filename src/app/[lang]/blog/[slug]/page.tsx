@@ -4,10 +4,11 @@ import Link from "next/link"
 import { getPost } from "@/lib/getPost"
 import type { Metadata } from 'next'
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { getTranslations } from 'next-intl/server';
+import { getMessages, createT } from "@/i18n";
 
 export default async function BlogPost({ params }: { params: { slug: string, lang: string } }) {
-  const t = await getTranslations('blog');
+  const messages = getMessages(params.lang);
+  const t = createT(messages);
   const post = await getPost(params.slug, params.lang) as unknown as {
     title: string;
     date: string;
@@ -47,7 +48,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string, lang: string }
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.lang });
+  const t = createT(getMessages(params.lang));
   const post = await getPost(params.slug, params.lang) as unknown as {
     title: string
     description?: string

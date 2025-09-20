@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { User, CreditCard, Settings } from "lucide-react"
 import { supabase } from "@/lib/supabase"
 import { Icons } from "@/components/icons"
-import { useTranslations } from "next-intl"
+import { useTranslations } from "@/i18n/client"
 
 export default function ProfilePage({ params: { lang } }: { params: { lang: string }
 }) {
