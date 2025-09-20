@@ -74,7 +74,7 @@ console.log('- 输出格式:', CONFIG.outputFormat);
 console.log('- 提取函数:', CONFIG.functionNames.join(', '));
 
 // 统一从源码字符串中提取（供 .js/.ts/.jsx/.tsx 及 vue 转换后的模板/脚本复用）
-function extractKeysFromCode(code) {
+function extractKeysFromCode(filePath,code) {
     const keys = new Set();
     let ast;
     try {
@@ -100,7 +100,7 @@ function extractKeysFromCode(code) {
         getTranslations: new Set(['getTranslations']),
     };
     // 可识别的翻译函数名（包含 t、$t、自定义）
-    const functionNames = new Set(Array.isArray(CONFIG.functionNames));
+    const functionNames = new Set(Array.from(CONFIG.functionNames));
 
     traverse(ast, {
         ImportDeclaration(path) {
@@ -161,6 +161,7 @@ function extractKeysFromCode(code) {
                 const ns = translatorVarToNs.get(tName) || '';
                 const key = ns ? `${ns}.${literal}` : literal;
                 keys.add(key);
+                console.log('file',filePath,'提取到键:', key,"ns",ns,"functionName:",tName);
                 matchCount++;
                 return;
             }
@@ -174,6 +175,7 @@ function extractKeysFromCode(code) {
             ) {
                 const literal = args[0].value;
                 // 无法确定成员对象的命名空间，直接按字面量处理
+                console.log('file',filePath,'提取到键:', literal,"functionName:",callee.property.name);
                 keys.add(literal);
                 matchCount++;
             }
@@ -184,7 +186,7 @@ function extractKeysFromCode(code) {
 }
 
 // .vue 支持：解析 SFC，脚本块走 Babel，模板编译为 render 代码后继续走 Babel
-function extractKeysFromVue(sfcCode) {
+function extractKeysFromVue(filePath,sfcCode) {
     const keys = new Set();
     let matchCount = 0;
 
@@ -192,14 +194,14 @@ function extractKeysFromVue(sfcCode) {
         const { descriptor } = parseSfc(sfcCode);
         const scriptCode = (descriptor.script?.content || '') + '\n' + (descriptor.scriptSetup?.content || '');
         if (scriptCode.trim()) {
-            const { keys: k1, matchCount: c1 } = extractKeysFromCode(scriptCode);
+            const { keys: k1, matchCount: c1 } = extractKeysFromCode(filePath,scriptCode);
             k1.forEach((k) => keys.add(k));
             matchCount += c1;
         }
         const templateCode = descriptor.template?.content || '';
         if (templateCode.trim()) {
             const renderCode = compileTpl(templateCode, { mode: 'module' }).code;
-            const { keys: k2, matchCount: c2 } = extractKeysFromCode(renderCode);
+            const { keys: k2, matchCount: c2 } = extractKeysFromCode(filePath,renderCode);
             k2.forEach((k) => keys.add(k));
             matchCount += c2;
         }
@@ -212,11 +214,12 @@ function extractKeysFromVue(sfcCode) {
 
 // 统一入口：按扩展名分发
 function extractKeysFromFile(filePath) {
+    // console.log('start file',filePath);
     const ext = path.extname(filePath).toLowerCase();
     const code = fs.readFileSync(filePath, 'utf-8');
-    if (ext === '.vue') return extractKeysFromVue(code);
+    if (ext === '.vue') return extractKeysFromVue(filePath,code);
     if (!['.js', '.jsx', '.ts', '.tsx'].includes(ext)) return { keys: [], matchCount: 0 };
-    return extractKeysFromCode(code);
+    return extractKeysFromCode(filePath,code);
 }
 
 function sanitizeKey(key) { return key.replace(/[\s-]/g, '_'); }

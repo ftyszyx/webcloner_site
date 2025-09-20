@@ -3,9 +3,9 @@
  */
 module.exports = {
   // 源代码目录（相对于项目根目录）
-  srcDir: '../src',
+  srcDir: './src',
   // 语言包输出目录（相对于项目根目录）
-  outputDir: '../src/messages',
+  outputDir: './src/messages',
   // 输出格式: 'ts' 或 'json'
   outputFormat: 'json',
 
