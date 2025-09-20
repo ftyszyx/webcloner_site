@@ -5,11 +5,20 @@ on:
     tags:
       - 'v*.*.*'
   workflow_dispatch:
+    inputs:
+      tags:
+        description: "版本号 (例如: v1.0.0)"
+        required: true
+        default: "latest"
+        type: string
 
 jobs:
   push_to_registry:
     name: Build and push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -27,7 +36,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/webcloner
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/webcloner_site
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
