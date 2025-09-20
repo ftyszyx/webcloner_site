@@ -6,7 +6,7 @@ on:
       - 'v*.*.*'
   workflow_dispatch:
     inputs:
-      tags:
+      version:
         description: "版本号 (例如: v1.0.0)"
         required: true
         default: "latest"
@@ -38,7 +38,19 @@ jobs:
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/webcloner_site
 
-      - name: Build and push Docker image
+      # 手动触发时使用用户输入的版本号
+      - name: Build and push (manual)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ inputs.version }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      # 非手动触发时使用 metadata 生成的标签
+      - name: Build and push (auto)
+        if: ${{ github.event_name != 'workflow_dispatch' }}
         uses: docker/build-push-action@v5
         with:
           context: .
