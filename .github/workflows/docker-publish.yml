@@ -44,9 +44,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: true
-          tags: ${{ inputs.version }}
-          labels: ${{ steps.meta.outputs.labels }}
+          push: true 
+          tags: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/webcloner_site:${{ inputs.version }} 
 
       # 非手动触发时使用 metadata 生成的标签
       - name: Build and push (auto)

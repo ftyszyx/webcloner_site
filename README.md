@@ -46,6 +46,11 @@ docker build -t webcloner .
 docker run -p 3000:3000 --env-file .env webcloner
 ```
 
-### change 
 
-1. use next-intl 处理多语言问题，避免语言参数层层传递
+## 提取语言包
+
+```
+npm run getlang
+```
+
+### change 
