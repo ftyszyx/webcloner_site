@@ -4,12 +4,11 @@ import Script from "next/script";
 //font icon
 const platforms = [
   { key: "weibo", label: "新浪微博", iconId: "icon-sina" },
-  { key: "sina", label: "新浪博客", iconId: "icon-sina" },
-  { key: "qqzone", label: "QQ空间", iconId: "icon-qqzone" },
-  { key: "qqsay", label: "QQ说说", iconId: "icon-qqzone" },
   {key:"redbook", label: "小红书", iconId: "icon-xiaohongshu" },
-  // {key:"kuaishou", label: "快手", iconId: "icon-kuaishou" },
   {key:"douyin", label: "抖音", iconId: "icon-douyin" },
+    { key: "sina", label: "新浪博客", iconId: "icon-sina" },
+  { key: "qqzone", label: "QQ空间", iconId: "icon-qqzone" },
+  { key: "qqsay", label: "QQ说说", iconId: "icon-qqzone" }
 ];
 export default function Platforms() {
   const t = useTranslations();

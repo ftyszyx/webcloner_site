@@ -275,5 +275,25 @@
     "title": "",
     "subtitle": ""
   },
-  "signout": ""
+  "signout": "",
+  "demo": {
+    "weibo": {
+      "title": "",
+      "description": ""
+    },
+    "douyin": {
+      "title": "",
+      "description": ""
+    },
+    "redbook": {
+      "title": "",
+      "description": ""
+    },
+    "sinablog": {
+      "title": "",
+      "description": ""
+    },
+    "title": "",
+    "description": ""
+  }
 }

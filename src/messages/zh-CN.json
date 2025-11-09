@@ -275,5 +275,25 @@
     "title": "支持主流的内容平台",
     "subtitle": "一键备份,保留你的原始数据，有其它平台需求，请联系我：QQ: 2246855973"
   },
-  "signout": ""
+  "signout": "",
+  "demo": {
+    "weibo": {
+      "title": "微博",
+      "description": "微博备份演示,支持图片，视频，文字内容,转发等"
+    },
+    "douyin": {
+      "title": "抖音",
+      "description": "抖音备份演示，支持图片，视频，文字内容等"
+    },
+    "redbook": {
+      "title": "小红书",
+      "description": "小红书备份演示，支持图片，视频，文字内容等"
+    },
+    "sinablog": {
+      "title": "新浪博客",
+      "description": "新浪博客备份演示，支持图片，视频，文字内容等"
+    },
+    "title": "演示视频",
+    "description": "演示视频展示了如何使用 WebCloner 备份微博、抖音、小红书、新浪博客等网站的内容。"
+  }
 }
